@@ -1,0 +1,170 @@
+:root {
+  --bg: #070812;
+  --bg-soft: #11172d;
+  --glass: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.24);
+  --text: #f3f5ff;
+  --muted: #c6cae5;
+  --accent: #8f78ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 20% 20%, #1e2550, #070812 62%);
+  color: var(--text);
+  font-family: "SF Pro Display", "Segoe UI", Tahoma, sans-serif;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.deck-shell {
+  min-height: 100vh;
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.75rem;
+  scroll-snap-type: y mandatory;
+}
+
+.scene {
+  min-height: calc(100dvh - 1.5rem);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.glass-card {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 10px 32px rgba(3, 7, 22, 0.45);
+}
+
+.scene h1,
+.scene h2 {
+  margin: 0;
+}
+
+.scene h1 {
+  font-size: clamp(2rem, 9vw, 3.3rem);
+}
+
+.scene h2 {
+  font-size: clamp(1.25rem, 4.5vw, 1.9rem);
+}
+
+.scene-question {
+  color: #d9d5ff;
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.hero-line,
+.short-note,
+.scene p,
+.scene li,
+.scene span,
+.scene small {
+  color: var(--muted);
+}
+
+.cards-grid,
+.mock-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.mini-card,
+.mock-card {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 0.9rem;
+}
+
+.stat-card {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.stat-card strong {
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.steps-list {
+  margin: 0;
+  padding-inline-start: 1.2rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.bars-wrap {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.bar-item p {
+  margin: 0 0 0.25rem;
+}
+
+.bar-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.bar-track span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #7a62ff, #5dd9ff);
+  border-radius: 999px;
+}
+
+.bar-item strong {
+  display: block;
+  margin-top: 0.3rem;
+}
+
+button {
+  width: fit-content;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(90deg, var(--accent), #57dbff);
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .deck-shell {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .scene {
+    min-height: calc(100dvh - 2rem);
+    padding: 1.4rem;
+  }
+
+  .cards-grid,
+  .mock-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
