@@ -6,45 +6,27 @@ import { InvestorPlatformContent } from "@/components/sections";
 
 export default function Home() {
   useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (media.matches) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
+      gsap.set(".scene", { opacity: 0, y: 20 });
 
-      // Scene animations
-      gsap.fromTo(
-        ".scene",
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.06,
-          ease: "power2.out",
-        }
-      );
-
-      // Hero 3D animation (FIXED)
-      gsap.fromTo(
-        ".hero-3d",
-        { opacity: 0, y: 24, rotateX: -8 },
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          duration: 1.2,
-          ease: "power3.out",
-        }
-      );
-
-      // Background animation
-      gsap.to(".page-shell", {
-        backgroundPosition: "200% 50%",
-        duration: 18,
-        ease: "none",
-        repeat: -1,
+      gsap.to(".scene", {
+        opacity: 1,
+        y: 0,
+        duration: 0.55,
+        ease: "power2.out",
+        stagger: 0.05,
+        clearProps: "transform"
       });
-
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   return <InvestorPlatformContent />;
