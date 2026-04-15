@@ -18,6 +18,17 @@ export default function Home() {
           ease: "power2.out"
         }
       );
+        ".hero-3d",
+        { opacity: 0, y: 24, rotateX: -8 },
+        { opacity: 1, y: 0, rotateX: 0, duration: 1.2, ease: "power3.out" }
+      );
+
+      gsap.to(".page-shell", {
+        backgroundPosition: "200% 50%",
+        duration: 18,
+        ease: "none",
+        repeat: -1
+      });
     });
 
     return () => ctx.revert();
