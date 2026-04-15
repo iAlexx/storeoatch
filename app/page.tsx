@@ -8,6 +8,16 @@ export default function Home() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
+        ".scene",
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.06,
+          ease: "power2.out"
+        }
+      );
         ".hero-3d",
         { opacity: 0, y: 24, rotateX: -8 },
         { opacity: 1, y: 0, rotateX: 0, duration: 1.2, ease: "power3.out" }
